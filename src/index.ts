@@ -3,7 +3,7 @@ import type { TransformHook } from 'rollup'
 import type { Plugin } from 'vite'
 import { parse } from '@vue/compiler-sfc'
 import { parse as scriptParse } from '@babel/parser'
-import {
+import type {
   ObjectExpression,
   BlockStatement,
   Statement,
