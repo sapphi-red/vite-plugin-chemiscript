@@ -61,14 +61,18 @@ Set the `chemi` attribute to `<script>`.
 
 <script chemi>
 import { sum } from 'vue-chemistry/math'
-import { reactify, set } from '@vueuse/shared'
-import { ref } from 'vue'
+import { reactify, set as _set } from '@vueuse/shared'
+import { ref, unref } from 'vue'
+
+const set = (a, b) => {
+  _set(a, unref(b))
+}
 
 export default {
   setup() {
     let a = ref(0)
     const increment = () => {
-      set(a, a.value + 1)
+      set(a, sum(a, 1))
     }
     const b = sum(a, 5)
     return { a, b, increment }

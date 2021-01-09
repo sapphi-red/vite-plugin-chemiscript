@@ -52,11 +52,16 @@ var chemiscript = () => {
     if (!bodyNode) {
       return;
     }
-    s.prepend("import { ref } from 'vue'\n");
-    s.prepend("import { reactify, set } from '@vueuse/shared'\n");
+    s.prepend("import { ref, unref } from 'vue'\n");
+    s.prepend("import { reactify, set as _set } from '@vueuse/shared'\n");
     s.prepend("import { sum } from 'vue-chemistry/math'\n");
     s.prepend("\n");
-    const rewriteStatements = (node2, reactive = true) => {
+    s.prepend(`
+const set = (a, b) => {
+  _set(a, unref(b))
+}
+`.trim());
+    const rewriteStatements = (node2) => {
       if (node2.type === "VariableDeclaration") {
         node2.declarations.forEach((decl) => {
           const init = decl.init;
@@ -79,27 +84,18 @@ var chemiscript = () => {
       } else if (node2.type === "AssignmentExpression") {
         const lhs = node2.left;
         const rhs = node2.right;
-        rewriteStatements(rhs, false);
+        rewriteStatements(rhs);
         s.prependLeft(lhs.start, "set(");
         s.overwrite(lhs.end, rhs.start, ", ");
         s.appendRight(rhs.end, ")");
       } else if (node2.type === "BinaryExpression") {
         const lhs = node2.left;
         const rhs = node2.right;
-        if (reactive) {
-          if (node2.operator === "+") {
-            s.prependRight(lhs.start, "sum(");
-          }
-          s.overwrite(lhs.end, rhs.start, ", ");
-          s.appendLeft(rhs.end, ")");
-        } else {
-          if (lhs.type !== "PrivateName") {
-            rewriteStatements(lhs);
-          }
-          rewriteStatements(rhs);
+        if (node2.operator === "+") {
+          s.prependRight(lhs.start, "sum(");
         }
-      } else if (node2.type === "Identifier") {
-        s.appendLeft(node2.end, ".value");
+        s.overwrite(lhs.end, rhs.start, ", ");
+        s.appendLeft(rhs.end, ")");
       }
     };
     const n = bodyNode;
