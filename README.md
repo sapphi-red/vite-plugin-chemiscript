@@ -48,6 +48,7 @@ export default {
 }
 </script>
 ```
+Set the `chemi` attribute to `<script>`.
 
 ```vue
 <template>
