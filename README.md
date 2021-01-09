@@ -10,6 +10,8 @@ Powered and inspired by [`vue-chemistry`](https://github.com/antfu/vue-chemistry
 **This project is seeking for a solution to the curious syntax and will not be developed untill it is solved.**  
 See the example for more details.
 
+**Also it is in an early development stage, so it won't work with many codes.**
+
 ## Install
 ```shell
 npm i -D sapphi-red/vite-plugin-chemiscript # yarn add -D sapphi-red/vite-plugin-chemiscript
