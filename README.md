@@ -50,6 +50,7 @@ export default {
 ```
 Set the `chemi` attribute to `<script>`.
 
+### Output
 ```vue
 <template>
   <div @click="increment">
