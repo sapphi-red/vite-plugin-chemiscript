@@ -7,7 +7,7 @@ A plugin that auto-reactifies your script.
 
 Powered by [`vue-chemistry`](https://github.com/antfu/vue-chemistry).
 
-**This project is seeking for a solution to the curious syntax and will not be developed untill it is solved.**
+**This project is seeking for a solution to the curious syntax and will not be developed untill it is solved.**  
 See the example for more details.
 
 ## Install
