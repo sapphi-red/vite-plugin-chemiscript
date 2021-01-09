@@ -52,15 +52,17 @@ var chemiscript = () => {
     if (!bodyNode) {
       return;
     }
-    s.prepend("import { ref, unref } from 'vue'\n");
-    s.prepend("import { reactify, set as _set } from '@vueuse/shared'\n");
-    s.prepend("import { sum } from 'vue-chemistry/math'\n");
     s.prepend("\n");
     s.prepend(`
 const set = (a, b) => {
   _set(a, unref(b))
 }
 `.trim());
+    s.prepend("\n");
+    s.prepend("import { ref, unref } from 'vue'\n");
+    s.prepend("import { reactify, set as _set } from '@vueuse/shared'\n");
+    s.prepend("import { sum } from 'vue-chemistry/math'\n");
+    s.prepend("\n");
     const rewriteStatements = (node2) => {
       if (node2.type === "VariableDeclaration") {
         node2.declarations.forEach((decl) => {

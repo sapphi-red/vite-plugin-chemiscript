@@ -13,6 +13,7 @@ See the example for more details.
 ## Install
 ```shell
 npm i -D sapphi-red/vite-plugin-chemiscript # yarn add -D sapphi-red/vite-plugin-chemiscript
+npm i vue-chemistry # yarn add vue-chemistry
 ```
 
 Add plugin in `vite.config.js`.
