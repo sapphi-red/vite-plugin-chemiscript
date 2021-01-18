@@ -75,7 +75,7 @@ const set = (a, b) => {
     )
     s.prepend('\n')
     s.prepend("import { ref, unref } from 'vue'\n")
-    s.prepend("import { reactify, set as _set } from '@vueuse/shared'\n")
+    s.prepend("import { reactify, set as _set } from 'vue-chemistry'\n")
     s.prepend("import { sum } from 'vue-chemistry/math'\n")
     s.prepend('\n')
 

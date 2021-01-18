@@ -64,7 +64,7 @@ Set the `chemi` attribute to `<script>`.
 
 <script chemi>
 import { sum } from 'vue-chemistry/math'
-import { reactify, set as _set } from '@vueuse/shared'
+import { reactify, set as _set } from 'vue-chemistry'
 import { ref, unref } from 'vue'
 
 const set = (a, b) => {
