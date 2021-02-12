@@ -33,3 +33,4 @@ const increment = () => {
 
 > Todo: Should functions be wrapped with `reactify`?
 > functions with side effects will not work if it is wrapped.
+> Maybe it should wrap with `reactify` unless the function name ends with "$".
